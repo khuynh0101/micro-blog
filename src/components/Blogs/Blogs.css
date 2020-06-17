@@ -1,0 +1,5 @@
+.blogs {
+  overflow: auto;
+  height: calc(100% - 128px)
+}
+

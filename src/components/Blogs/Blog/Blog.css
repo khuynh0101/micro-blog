@@ -1,0 +1,24 @@
+
+.blog-item{
+    display: grid;
+    grid-template-columns: 12% 1fr 1fr 12%;
+    grid-template-rows: auto auto;
+    padding: 10px 0 60px 0;
+}
+.blog-item-header-name{
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+.blog-item-header-timestamp{
+    justify-self: end;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+.blog-item-content{
+    margin:0;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    background:#f6f6f6;
+    border-radius: 8px;
+    padding:20px;
+}
