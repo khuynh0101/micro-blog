@@ -1,21 +1,41 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Blogs from './components/Blogs/Blogs.js';
+import InputText from './components/InputText/InputText.js';
+
+import posts from './data/blog-posts.json';
+
 
 const App = () => {
-  const placeHolderText = "What's happening?";
+  const [postText, setPostText] = useState('');
+  const [blogPosts, setBlogPosts] = useState([]);
+
+  useEffect(() => {
+    setBlogPosts(posts)
+  },[]);
+
+const handleInputTextChanged = (e) =>{
+  //change max length into context
+  if (e.target.value.length <= 140)
+    setPostText(e.target.value);  
+}
+
+const handlePostClicked = () =>{
+  const newPost ={
+    "avatar": "K",
+    "name": "Khuong Huynh",
+    "handle": "@devsharp.co",
+    "date": Date.now(),
+    "text": postText
+  }
+  const posts = [...blogPosts, newPost];
+  setBlogPosts(posts);
+}
   return (
     <div className='container'>
       <h1>Micro Blog</h1>
-      <Blogs />
-      <div className='blog-input-container'>       
-        <span className='blog-input-counter'>140</span>
-        <input
-          className='blog-input'
-          placeholder={placeHolderText}
-          type='text'
-        />
-      </div>
+      <Blogs posts={blogPosts} />
+      <InputText value={postText} onInputTextChanged={handleInputTextChanged} onSendButtonClicked={handlePostClicked}/>
     </div>
   );
 };

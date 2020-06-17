@@ -2,12 +2,14 @@ import React from 'react';
 import './Blogs.css';
 import Blog from './Blog/Blog.js';
 
-const Blogs = () => {
+const Blogs = ({posts}) => {
   return (
     <div className='blogs'>
-      <Blog />
-
-     
+      {posts.map((post, index) => {
+          return (
+            <Blog key={index} post={post}/>
+          );
+        })}
     </div>
   );
 };
