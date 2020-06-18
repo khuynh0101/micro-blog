@@ -2,7 +2,6 @@ import React from 'react';
 import './InputText.css';
 
 const InputText = ({ value, onInputTextChanged, onSendButtonClicked }) => {
-  console.log(value);
   const placeHolderText = "What's happening?";
   let textCounter = 140; 
   textCounter -= value.length;

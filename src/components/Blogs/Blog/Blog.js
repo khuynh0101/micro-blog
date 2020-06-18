@@ -1,5 +1,6 @@
 import React from 'react';
 import './Blog.css';
+import formatDate from '../../../utils/formatDate.js';
 
 const Blog = ({ post }) => {
   return (
@@ -10,7 +11,7 @@ const Blog = ({ post }) => {
           <h2 className='blog-item-header-name'>
             {post.name} - {post.handle}
           </h2>
-          <h2 className='blog-item-header-timestamp'>{post.date}</h2>
+          <h2 className='blog-item-header-timestamp'>{formatDate(post.date)}</h2>
         </div>
         <p className='blog-item-content'>{post.text}</p>
       </div>

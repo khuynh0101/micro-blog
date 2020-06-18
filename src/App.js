@@ -1,41 +1,44 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Blogs from './components/Blogs/Blogs.js';
 import InputText from './components/InputText/InputText.js';
 
 import posts from './data/blog-posts.json';
 
-
 const App = () => {
   const [postText, setPostText] = useState('');
   const [blogPosts, setBlogPosts] = useState([]);
 
   useEffect(() => {
-    setBlogPosts(posts)
-  },[]);
+    setBlogPosts(posts);
+  }, []);
 
-const handleInputTextChanged = (e) =>{
-  //change max length into context
-  if (e.target.value.length <= 140)
-    setPostText(e.target.value);  
-}
+  const handleInputTextChanged = (e) => {
+    //change max length into context
+    if (e.target.value.length <= 140) setPostText(e.target.value);
+  };
 
-const handlePostClicked = () =>{
-  const newPost ={
-    "avatar": "K",
-    "name": "Khuong Huynh",
-    "handle": "@devsharp.co",
-    "date": Date.now(),
-    "text": postText
-  }
-  const posts = [...blogPosts, newPost];
-  setBlogPosts(posts);
-}
+  const handlePostClicked = () => {
+    const newPost = {
+      avatar: 'K',
+      name: 'Khuong Huynh',
+      handle: '@khuonghuynh',
+      date: Date.now(),
+      text: postText,
+    };
+    const posts = [...blogPosts, newPost];
+    setBlogPosts(posts);
+    setPostText('');
+  };
   return (
     <div className='container'>
       <h1>Micro Blog</h1>
       <Blogs posts={blogPosts} />
-      <InputText value={postText} onInputTextChanged={handleInputTextChanged} onSendButtonClicked={handlePostClicked}/>
+      <InputText
+        value={postText}
+        onInputTextChanged={handleInputTextChanged}
+        onSendButtonClicked={handlePostClicked}
+      />
     </div>
   );
 };
