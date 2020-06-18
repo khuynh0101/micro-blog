@@ -1,14 +1,21 @@
 [
   {
-    "avatar": "M",
+    "avatar": "CB",
+    "name": "Conan O'Brien",
+    "handle": "@ConanOBrien",
+    "date": "1592425733867",
+    "text": "Love this shot. Reminds me of the first time someone found me at the end of a rainbow holding a pot of gold."
+  },
+  {
+    "avatar": "MM",
     "name": "Mary Meeker",
     "handle": "@marymeeker",
-    "date": "1592440133867",
+    "date": "1592435733867",
     "text": "Spotify has grown to more than 60 million monthly active users, 15 million of whom are paying subscribers"
   }
   ,
   {
-    "avatar": "C",
+    "avatar": "CB",
     "name": "Conan O'Brien",
     "handle": "@ConanOBrien",
     "date": "1592439936904",

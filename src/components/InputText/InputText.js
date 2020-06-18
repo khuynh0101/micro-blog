@@ -1,5 +1,6 @@
 import React from 'react';
 import './InputText.css';
+import isEnterKey from '../../utils/checkEnterKey.js';
 
 const InputText = ({ value, onInputTextChanged, onSendButtonClicked }) => {
   const placeHolderText = "What's happening?";
@@ -11,13 +12,14 @@ const InputText = ({ value, onInputTextChanged, onSendButtonClicked }) => {
       <span className='blog-input-counter'>{textCounter}</span>
       <input
         onChange={onInputTextChanged}
+        onKeyDown={(event)=>isEnterKey(event, onSendButtonClicked)}
         className='blog-input'
         placeholder={placeHolderText}
         type='text'
         value={value}
       />
       <button className='blog-input-button' disabled={isSendButtonDisabled} onClick={onSendButtonClicked}>
-        <svg
+        <svg className="blog-input-button-svg"
           xmlns='http://www.w3.org/2000/svg'
           height='32'
           viewBox='0 0 24 24'

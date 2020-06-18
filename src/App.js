@@ -25,6 +25,7 @@ const App = () => {
       handle: '@khuonghuynh',
       date: Date.now(),
       text: postText,
+      isMyPost: true,
     };
     const posts = [...blogPosts, newPost];
     setBlogPosts(posts);
