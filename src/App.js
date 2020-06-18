@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Blogs from './components/Blogs/Blogs.js';
 import InputText from './components/InputText/InputText.js';
@@ -19,17 +19,19 @@ const App = () => {
   };
 
   const handlePostClicked = () => {
-    const newPost = {
-      avatar: 'K',
-      name: 'Khuong Huynh',
-      handle: '@khuonghuynh',
-      date: Date.now(),
-      text: postText,
-      isMyPost: true,
-    };
-    const posts = [...blogPosts, newPost];
-    setBlogPosts(posts);
-    setPostText('');
+    if (postText.trim().length > 0) {
+      const newPost = {
+        avatar: 'KH',
+        name: 'Khuong Huynh',
+        handle: '@khuonghuynh',
+        date: Date.now(),
+        text: postText,
+        isMyPost: true,
+      };
+      const posts = [...blogPosts, newPost];
+      setBlogPosts(posts);
+      setPostText('');
+    }
   };
   return (
     <div className='container'>

@@ -28,11 +28,10 @@ const Blog = ({ post }) => {
           <div>
             <div className='blog-item-header-flex'>
               <h2 className='blog-item-header-timestamp'>
-              {formatDate(post.date)}
+                {formatDate(post.date)}
               </h2>
-              <h2>
-              </h2>
-            </div>            
+              <h2></h2>
+            </div>
             <p className='blog-item-content mycontent'>{post.text}</p>
           </div>
           <div className='blog-item-avatar right'>{post.avatar}</div>
