@@ -1,12 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import './Blogs.css';
-import Blog from './Blog/Blog.js';
+import './Posts.css';
+import Post from './Post/Post.js';
 
-const Blogs = ({ posts }) => {
+const Posts = ({ posts, onHover, onLikeButtonClick }) => {
   //allows scroll to botttom automatically
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {
-    console.log('scrolling');
     setTimeout(() => {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }, 200); //settimeout is needed for mobile devices
@@ -16,11 +15,18 @@ const Blogs = ({ posts }) => {
   return (
     <div className='blogs'>
       {posts.map((post, index) => {
-        return <Blog key={index} post={post} />;
+        return (
+          <Post
+            key={index}
+            post={post}
+            onHover={() => onHover(index)}
+            onLikeButtonClick={() => onLikeButtonClick(index)}
+          />
+        );
       })}
       <div ref={messagesEndRef} />
     </div>
   );
 };
 
-export default Blogs;
+export default Posts;

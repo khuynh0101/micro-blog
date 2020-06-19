@@ -14,6 +14,9 @@
 .blog-item-header-timestamp {
   font-size: 0.8rem;
 }
+.blog-item-container {
+  position: relative;
+}
 .blog-item-content {
   margin: 0;
   grid-column-start: 2;
@@ -23,6 +26,7 @@
   padding: 20px;
   font-size: 1.2rem;
 }
+
 .mycontent {
   background: #00c397;
   color: white;

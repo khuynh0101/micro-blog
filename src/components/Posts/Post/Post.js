@@ -1,14 +1,29 @@
 import React from 'react';
-import './Blog.css';
+import './Post.css';
+import PostFeature from './PostFeature.js';
 import formatDate from '../../../utils/formatDate.js';
 
-const Blog = ({ post }) => {
+const Post = ({ post, onHover, onLikeButtonClick }) => {
+  const renderPostFeature = () => {
+    if (post.isHovered) {
+      return (
+        <PostFeature
+          features={post.features}
+          onLikeButtonClick={onLikeButtonClick}
+        />
+      );
+    } else return null;
+  };
   return (
     <article className='blog-item'>
       {!post.isMyPost && (
         <>
           <div className='blog-item-avatar'>{post.avatar}</div>
-          <div>
+          <div
+            className='blog-item-container'
+            onMouseEnter={onHover}
+            onMouseLeave={onHover}
+          >
             <div className='blog-item-header-flex'>
               <h2 className='blog-item-header-name'>
                 {post.name} - {post.handle}
@@ -18,6 +33,7 @@ const Blog = ({ post }) => {
               </h2>
             </div>
             <p className='blog-item-content'>{post.text}</p>
+            {renderPostFeature()}
           </div>
         </>
       )}
@@ -41,4 +57,4 @@ const Blog = ({ post }) => {
   );
 };
 
-export default Blog;
+export default Post;
