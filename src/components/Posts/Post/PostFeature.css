@@ -27,7 +27,7 @@
   cursor: pointer;
 }
 .selected {
-  fill: #30475e;
+  fill: rgb(167, 20, 20);
 }
 .feature-item-counter {
   font-size: 0.88rem;

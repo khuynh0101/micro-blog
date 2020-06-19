@@ -40,10 +40,11 @@ const App = () => {
       setPostText('');
     }
   };
+  //move this into post feature??
   const handleHoverToggle = (index) => {
     const [posts, post] = getPost(index);
     if (!post.isMyPost) {
-      post.isHovered = true; //!post.isHovered;
+      post.isHovered = !post.isHovered;
       setBlogPosts(posts);
     }
   };
@@ -59,7 +60,7 @@ const App = () => {
     setBlogPosts(posts);
   };
 
-  const handleReplyButtonClick = (index, replyText) => {
+  const handleReplySendButtonClick = (index, replyText) => {
     if (replyText.trim().length > 0) {
       const replyJSON = getReplyJSON(replyText);
       const [posts, post] = getPost(index);
@@ -93,7 +94,7 @@ const App = () => {
         posts={blogPosts}
         onHover={handleHoverToggle}
         onLikeButtonClick={handleLikeButtonClick}
-        onReplyButtonClick={handleReplyButtonClick}
+        onReplySendButtonClick={handleReplySendButtonClick}
       />
       <div className='blog-input-container'>
         <InputText

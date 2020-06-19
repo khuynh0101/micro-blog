@@ -2,7 +2,12 @@ import React, { useEffect, useRef } from 'react';
 import './Posts.css';
 import Post from './Post/Post.js';
 
-const Posts = ({ posts, onHover, onLikeButtonClick, onReplyButtonClick }) => {
+const Posts = ({
+  posts,
+  onHover,
+  onLikeButtonClick,
+  onReplySendButtonClick,
+}) => {
   //allows scroll to botttom automatically
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {
@@ -21,7 +26,9 @@ const Posts = ({ posts, onHover, onLikeButtonClick, onReplyButtonClick }) => {
             post={post}
             onHover={() => onHover(index)}
             onLikeButtonClick={() => onLikeButtonClick(index)}
-            onReplyButtonClick={(value) => onReplyButtonClick(index, value)}
+            onReplySendButtonClick={(value) =>
+              onReplySendButtonClick(index, value)
+            }
           />
         );
       })}

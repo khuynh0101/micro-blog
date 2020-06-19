@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import './PostFeature.css';
 import InputText from '../../../components/InputText/InputText.js';
 
-const PostFeature = ({ features, onLikeButtonClick, onReplyButtonClick }) => {
+const PostFeature = ({
+  features,
+  onLikeButtonClick,
+  onReplySendButtonClick,
+}) => {
   const [isReply, setReplyStatus] = useState(false);
   const [replyText, setReplyText] = useState('');
 
@@ -22,8 +26,8 @@ const PostFeature = ({ features, onLikeButtonClick, onReplyButtonClick }) => {
     setReplyText(event.target.value);
   };
 
-  const handleReplyButtonClick = () => {
-    onReplyButtonClick(replyText);
+  const handleReplySendButtonClick = () => {
+    onReplySendButtonClick(replyText);
     setReplyText('');
   };
   return (
@@ -58,7 +62,7 @@ const PostFeature = ({ features, onLikeButtonClick, onReplyButtonClick }) => {
           <InputText
             value={replyText}
             onInputTextChanged={(event) => handleInputTextChanged(event)}
-            onSendButtonClicked={(value) => handleReplyButtonClick()}
+            onSendButtonClicked={(value) => handleReplySendButtonClick()}
             // onSendButtonClicked={(value) => onReplyButtonClick(replyText)}
           />
         </div>
