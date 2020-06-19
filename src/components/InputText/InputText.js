@@ -4,22 +4,27 @@ import isEnterKey from '../../utils/checkEnterKey.js';
 
 const InputText = ({ value, onInputTextChanged, onSendButtonClicked }) => {
   const placeHolderText = "What's happening?";
-  let textCounter = 140; 
+  let textCounter = 140;
   textCounter -= value.length;
   const isSendButtonDisabled = value.trim().length === 0 ? true : false;
   return (
-    <div className='blog-input-container'>
-      <span className='blog-input-counter'>{textCounter}</span>
+    <div className='input-container'>
+      <span className='input-counter'>{textCounter}</span>
       <input
         onChange={onInputTextChanged}
-        onKeyDown={(event)=>isEnterKey(event, onSendButtonClicked)}
-        className='blog-input'
+        onKeyDown={(event) => isEnterKey(event, onSendButtonClicked)}
+        className='input'
         placeholder={placeHolderText}
         type='text'
         value={value}
       />
-      <button className='blog-input-button' disabled={isSendButtonDisabled} onClick={onSendButtonClicked}>
-        <svg className="blog-input-button-svg"
+      <button
+        className='input-button'
+        disabled={isSendButtonDisabled}
+        onClick={onSendButtonClicked}
+      >
+        <svg
+          className='input-button-svg'
           xmlns='http://www.w3.org/2000/svg'
           height='32'
           viewBox='0 0 24 24'

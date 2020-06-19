@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PostFeature.css';
+import InputText from '../../../components/InputText/InputText.js';
 
-const PostFeature = ({ features, onLikeButtonClick }) => {
+const PostFeature = ({ features, onLikeButtonClick, onReplyButtonClick }) => {
+  const [isReply, setReplyStatus] = useState(false);
+  const [replyText, setReplyText] = useState('');
+
   let likeClassName = 'feature-item-button';
   let count = 0;
   if (features && features.isLike) {
     likeClassName += ' selected';
     count = features.count;
   }
+
+  const handleStartReplyClick = (index) => {
+    setReplyStatus(!isReply);
+    if (!isReply) setReplyText('');
+  };
+
+  const handleInputTextChanged = (event) => {
+    setReplyText(event.target.value);
+  };
+
+  const handleReplyButtonClick = () => {
+    onReplyButtonClick(replyText);
+    setReplyText('');
+  };
   return (
     <div className='feature'>
       <div className='feature-item'>
@@ -23,7 +41,7 @@ const PostFeature = ({ features, onLikeButtonClick }) => {
           </svg>
         </button>
         <div className='feature-item-counter'>{count}</div>
-        <button className='feature-item-button'>
+        <button className='feature-item-button' onClick={handleStartReplyClick}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             height='24'
@@ -35,7 +53,16 @@ const PostFeature = ({ features, onLikeButtonClick }) => {
           </svg>
         </button>
       </div>
-      <input placeholder='a' />
+      {isReply && (
+        <div className='reply-input-container'>
+          <InputText
+            value={replyText}
+            onInputTextChanged={(event) => handleInputTextChanged(event)}
+            onSendButtonClicked={(value) => handleReplyButtonClick()}
+            // onSendButtonClicked={(value) => onReplyButtonClick(replyText)}
+          />
+        </div>
+      )}
     </div>
   );
 };

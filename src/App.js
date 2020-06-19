@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Posts from './components/Posts/Posts.js';
 import InputText from './components/InputText/InputText.js';
@@ -33,6 +33,7 @@ const App = () => {
           isLike: false,
           count: 0,
         },
+        replies: [],
       };
       const posts = [...blogPosts, newPost];
       setBlogPosts(posts);
@@ -49,14 +50,34 @@ const App = () => {
   const handleLikeButtonClick = (index) => {
     const [posts, post] = getPost(index);
     if (!post.features) {
-      //have to create features object
+      //have to create features object if doesn't exists
       post.features = {};
       post.features.isLike = true;
       if (!post.features.count) post.features.count = 0;
       post.features.count++;
     }
-    console.log(post);
     setBlogPosts(posts);
+  };
+
+  const handleReplyButtonClick = (index, replyText) => {
+    if (replyText.trim().length > 0) {
+      const replyJSON = getReplyJSON(replyText);
+      const [posts, post] = getPost(index);
+      if (!post.replies) {
+        post.replies = [replyJSON];
+      } else {
+        post.replies = [...post.replies, replyJSON];
+      }
+      console.log(post);
+      setBlogPosts(posts);
+    }
+  };
+
+  const getReplyJSON = (replyText) => {
+    return {
+      text: replyText,
+      date: Date.now(),
+    };
   };
 
   const getPost = (targetindex) => {
@@ -72,12 +93,15 @@ const App = () => {
         posts={blogPosts}
         onHover={handleHoverToggle}
         onLikeButtonClick={handleLikeButtonClick}
+        onReplyButtonClick={handleReplyButtonClick}
       />
-      <InputText
-        value={postText}
-        onInputTextChanged={handleInputTextChanged}
-        onSendButtonClicked={handlePostClicked}
-      />
+      <div className='blog-input-container'>
+        <InputText
+          value={postText}
+          onInputTextChanged={handleInputTextChanged}
+          onSendButtonClicked={handlePostClicked}
+        />
+      </div>
     </div>
   );
 };

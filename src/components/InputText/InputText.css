@@ -1,28 +1,27 @@
-.blog-input-container {
+.input-container {
   display: flex;
   width: 100%;
-  height: 60px;
-  position: absolute;
-  bottom: 0;
+  /*position: absolute;
+   bottom: 0; */
   align-items: center;
-  border-top: 0.5px solid #00c397;
+  height: 50px;
 }
-.blog-input {
+.input {
   width: 100%;
   outline: 0;
   border: 0;
   font-size: 1.2rem;
   font-weight: 600;
 }
-.blog-input-counter {
+.input-counter {
   padding: 0.8rem;
   font-weight: 600;
   font-size: 0.7rem;
   letter-spacing: 1px;
   opacity: 0.4;
 }
-.blog-input-button {
-  margin: 0 1rem 0 0;
+.input-button {
+  margin: 0 1rem 0 1rem;
   padding: 0;
   background: none;
   border: none;
@@ -31,17 +30,17 @@
   cursor: pointer;
 }
 
-.blog-input-button:active {
+.input-button:active {
   position: relative;
   top: 1px;
 }
-.blog-input-button:disabled {
+.input-button:disabled {
   fill: #b7b7b7;
   cursor: default;
   position: unset;
 }
 
-.blog-input-button-svg {
+.input-button-svg {
   height: 2rem;
   width: 2rem;
 }

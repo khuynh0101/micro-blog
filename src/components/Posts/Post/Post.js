@@ -3,13 +3,14 @@ import './Post.css';
 import PostFeature from './PostFeature.js';
 import formatDate from '../../../utils/formatDate.js';
 
-const Post = ({ post, onHover, onLikeButtonClick }) => {
+const Post = ({ post, onHover, onLikeButtonClick, onReplyButtonClick }) => {
   const renderPostFeature = () => {
     if (post.isHovered) {
       return (
         <PostFeature
           features={post.features}
           onLikeButtonClick={onLikeButtonClick}
+          onReplyButtonClick={onReplyButtonClick}
         />
       );
     } else return null;
@@ -35,6 +36,10 @@ const Post = ({ post, onHover, onLikeButtonClick }) => {
             <p className='blog-item-content'>{post.text}</p>
             {renderPostFeature()}
           </div>
+          {post.replies &&
+            post.replies.map((reply, index) => {
+              return <div>{reply.text}</div>;
+            })}
         </>
       )}
 
