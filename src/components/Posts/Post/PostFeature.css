@@ -1,0 +1,50 @@
+.feature {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #c1a57b;
+  align-items: start;
+  padding-top: 0.2rem;
+  animation: fade 0.5s;
+}
+.feature-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*padding-top: 1rem;*/
+}
+.feature-item-button {
+  margin: 0 4px 0 0;
+  padding: 0;
+  background: none;
+  border: none;
+  fill: #fff;
+  outline: none;
+  cursor: pointer;
+}
+.selected {
+  fill: rgb(167, 20, 20);
+}
+.feature-item-counter {
+  font-size: 0.88rem;
+  color: white;
+  padding-right: 1rem;
+}
+
+.reply-input-container {
+  border-top: 0.5px solid #30475e;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
