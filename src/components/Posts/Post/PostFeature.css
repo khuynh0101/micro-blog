@@ -10,6 +10,7 @@
   background: #c1a57b;
   align-items: start;
   padding-top: 0.2rem;
+  animation: fade 0.5s;
 }
 .feature-item {
   display: flex;
@@ -37,4 +38,13 @@
 
 .reply-input-container {
   border-top: 0.5px solid #30475e;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

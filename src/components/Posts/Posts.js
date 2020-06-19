@@ -24,7 +24,7 @@ const Posts = ({
           <Post
             key={index}
             post={post}
-            onHover={() => onHover(index)}
+            // onHover={() => onHover(index)}
             onLikeButtonClick={() => onLikeButtonClick(index)}
             onReplySendButtonClick={(value) =>
               onReplySendButtonClick(index, value)

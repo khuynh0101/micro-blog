@@ -40,14 +40,7 @@ const App = () => {
       setPostText('');
     }
   };
-  //move this into post feature??
-  const handleHoverToggle = (index) => {
-    const [posts, post] = getPost(index);
-    if (!post.isMyPost) {
-      post.isHovered = !post.isHovered;
-      setBlogPosts(posts);
-    }
-  };
+
   const handleLikeButtonClick = (index) => {
     const [posts, post] = getPost(index);
     if (!post.features) {
@@ -69,7 +62,6 @@ const App = () => {
       } else {
         post.replies = [...post.replies, replyJSON];
       }
-      console.log(post);
       setBlogPosts(posts);
     }
   };
@@ -78,6 +70,7 @@ const App = () => {
     return {
       text: replyText,
       date: Date.now(),
+      avatar: 'KH',
     };
   };
 
@@ -92,7 +85,7 @@ const App = () => {
       <h1>Micro Blog</h1>
       <Posts
         posts={blogPosts}
-        onHover={handleHoverToggle}
+        // onHover={handleHoverToggle}
         onLikeButtonClick={handleLikeButtonClick}
         onReplySendButtonClick={handleReplySendButtonClick}
       />
