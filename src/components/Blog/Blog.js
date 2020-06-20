@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Posts from '../../components/Posts/Posts';
-import InputText from '../../components/InputText/InputText';
+import { Posts } from '../../components/Posts/Posts';
+import { InputText } from '../../components/InputText/InputText';
 import { useBlogContext } from '../../contexts/BlogContext';
 
 export const Blog = () => {

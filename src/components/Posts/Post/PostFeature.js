@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './PostFeature.css';
-import InputText from '../../../components/InputText/InputText';
+import { InputText } from '../../../components/InputText/InputText';
 import { useBlogContext } from '../../../contexts/BlogContext';
 import { findPost } from '../../../utils/findPost';
 
-const PostFeature = ({ index, features }) => {
+export const PostFeature = ({ index, features }) => {
   const [blogPosts, setBlogPosts] = useBlogContext();
 
   const [isReply, setReplyStatus] = useState(false);
@@ -102,5 +102,3 @@ const PostFeature = ({ index, features }) => {
     </div>
   );
 };
-
-export default PostFeature;

@@ -1,8 +1,12 @@
 import React from 'react';
 import './InputText.css';
-import isEnterKey from '../../utils/checkEnterKey';
+import { checkEnterKey } from '../../utils/checkEnterKey';
 
-const InputText = ({ value, onInputTextChanged, onSendButtonClicked }) => {
+export const InputText = ({
+  value,
+  onInputTextChanged,
+  onSendButtonClicked,
+}) => {
   const placeHolderText = "What's happening?";
   let textCounter = 140;
   textCounter -= value.length;
@@ -12,7 +16,7 @@ const InputText = ({ value, onInputTextChanged, onSendButtonClicked }) => {
       <span className='input-counter'>{textCounter}</span>
       <input
         onChange={onInputTextChanged}
-        onKeyDown={(event) => isEnterKey(event, onSendButtonClicked)}
+        onKeyDown={(event) => checkEnterKey(event, onSendButtonClicked)}
         className='input'
         placeholder={placeHolderText}
         type='text'
@@ -37,5 +41,3 @@ const InputText = ({ value, onInputTextChanged, onSendButtonClicked }) => {
     </div>
   );
 };
-
-export default InputText;

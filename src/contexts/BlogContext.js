@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from 'react';
-import { useStore } from '../utils/useStore';
+import { useStore } from '../hooks/useStore';
 
 const BlogContext = createContext([]);
 

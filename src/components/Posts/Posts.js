@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import './Posts.css';
-import Post from './Post/Post';
+import { Post } from './Post/Post';
 import { useBlogContext } from '../../contexts/BlogContext';
 
-const Posts = ({}) => {
-  const [posts, setPosts] = useBlogContext();
+export const Posts = ({}) => {
+  const [posts] = useBlogContext();
   //allows scroll to botttom automatically
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {
@@ -23,5 +23,3 @@ const Posts = ({}) => {
     </div>
   );
 };
-
-export default Posts;

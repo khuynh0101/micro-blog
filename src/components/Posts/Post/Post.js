@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './Post.css';
-import PostFeature from './PostFeature';
-import formatDate from '../../../utils/formatDate';
+import { PostFeature } from './PostFeature';
+import { formatDate } from '../../../utils/formatDate';
 
-const Post = ({ index, post }) => {
+export const Post = ({ index, post }) => {
   const [hoverStatus, setHoverStatus] = useState(false);
 
   const toggleOnHover = () => {
@@ -22,7 +22,6 @@ const Post = ({ index, post }) => {
         <div>
           <div className='blog-item-header-flex'>
             <h2 className='blog-item-header-timestamp'>{formatDate(date)}</h2>
-            <h2></h2>
           </div>
           <p className='blog-item-content mycontent'>{text}</p>
         </div>
@@ -70,5 +69,3 @@ const Post = ({ index, post }) => {
     </article>
   );
 };
-
-export default Post;
