@@ -1,36 +1,18 @@
 import React, { useState } from 'react';
 import './Post.css';
-import PostFeature from './PostFeature.js';
-import formatDate from '../../../utils/formatDate.js';
+import PostFeature from './PostFeature';
+import formatDate from '../../../utils/formatDate';
 
-const Post = ({ post, onLikeButtonClick, onReplySendButtonClick }) => {
+const Post = ({ index, post }) => {
   const [hoverStatus, setHoverStatus] = useState(false);
 
   const toggleOnHover = () => {
     setHoverStatus(!hoverStatus);
   };
-  // const showFeature = () => {
-  //   console.log('show');
-  //   setHoverStatus(true);
-  // };
-  // const hideFeature = () => {
-  //   console.log('hide');
-  //   setHoverStatus(false);
-  // };
 
-  const handleReplySendButtonClick = (value) => {
-    onReplySendButtonClick(value);
-  };
   const renderPostFeature = () => {
     if (hoverStatus) {
-      //if (post.isHovered) {
-      return (
-        <PostFeature
-          features={post.features}
-          onLikeButtonClick={onLikeButtonClick}
-          onReplySendButtonClick={(value) => handleReplySendButtonClick(value)}
-        />
-      );
+      return <PostFeature index={index} features={post.features} />;
     } else return null;
   };
   const renderPostContent = (text, date, avatar) => {

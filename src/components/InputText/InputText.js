@@ -1,6 +1,6 @@
 import React from 'react';
 import './InputText.css';
-import isEnterKey from '../../utils/checkEnterKey.js';
+import isEnterKey from '../../utils/checkEnterKey';
 
 const InputText = ({ value, onInputTextChanged, onSendButtonClicked }) => {
   const placeHolderText = "What's happening?";

@@ -1,13 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import './Posts.css';
-import Post from './Post/Post.js';
+import Post from './Post/Post';
+import { useBlogContext } from '../../contexts/BlogContext';
 
-const Posts = ({
-  posts,
-  onHover,
-  onLikeButtonClick,
-  onReplySendButtonClick,
-}) => {
+const Posts = ({}) => {
+  const [posts, setPosts] = useBlogContext();
   //allows scroll to botttom automatically
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {
@@ -20,17 +17,7 @@ const Posts = ({
   return (
     <div className='blogs'>
       {posts.map((post, index) => {
-        return (
-          <Post
-            key={index}
-            post={post}
-            // onHover={() => onHover(index)}
-            onLikeButtonClick={() => onLikeButtonClick(index)}
-            onReplySendButtonClick={(value) =>
-              onReplySendButtonClick(index, value)
-            }
-          />
-        );
+        return <Post key={index} index={index} post={post} />;
       })}
       <div ref={messagesEndRef} />
     </div>

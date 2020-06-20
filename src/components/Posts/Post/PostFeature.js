@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './PostFeature.css';
-import InputText from '../../../components/InputText/InputText.js';
+import InputText from '../../../components/InputText/InputText';
+import { useBlogContext } from '../../../contexts/BlogContext';
+import { findPost } from '../../../utils/findPost';
 
-const PostFeature = ({
-  features,
-  onLikeButtonClick,
-  onReplySendButtonClick,
-}) => {
+const PostFeature = ({ index, features }) => {
+  const [blogPosts, setBlogPosts] = useBlogContext();
+
   const [isReply, setReplyStatus] = useState(false);
   const [replyText, setReplyText] = useState('');
 
@@ -16,6 +16,20 @@ const PostFeature = ({
     likeClassName += ' selected';
     count = features.count;
   }
+
+  const handleLikeButtonClick = () => {
+    const [posts, post] = findPost(blogPosts, index);
+    if (post) {
+      if (!post.features) {
+        //have to create features object if doesn't exists
+        post.features = {};
+        post.features.isLike = true;
+        if (!post.features.count) post.features.count = 0;
+        post.features.count++;
+      } else post.features.count++;
+      setBlogPosts(posts);
+    }
+  };
 
   const handleStartReplyClick = (index) => {
     setReplyStatus(!isReply);
@@ -27,13 +41,32 @@ const PostFeature = ({
   };
 
   const handleReplySendButtonClick = () => {
-    onReplySendButtonClick(replyText);
+    if (replyText.trim().length > 0) {
+      const replyJSON = getReplyJSON(replyText);
+      const [posts, post] = findPost(blogPosts, index);
+      if (post) {
+        if (!post.replies) {
+          post.replies = [replyJSON];
+        } else {
+          post.replies = [...post.replies, replyJSON];
+        }
+        setBlogPosts(posts);
+      }
+    }
     setReplyText('');
+  };
+
+  const getReplyJSON = (replyText) => {
+    return {
+      text: replyText,
+      date: Date.now(),
+      avatar: 'KH',
+    };
   };
   return (
     <div className='feature'>
       <div className='feature-item'>
-        <button className={likeClassName} onClick={onLikeButtonClick}>
+        <button className={likeClassName} onClick={handleLikeButtonClick}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             height='24'
@@ -63,7 +96,6 @@ const PostFeature = ({
             value={replyText}
             onInputTextChanged={(event) => handleInputTextChanged(event)}
             onSendButtonClicked={(value) => handleReplySendButtonClick()}
-            // onSendButtonClicked={(value) => onReplyButtonClick(replyText)}
           />
         </div>
       )}
